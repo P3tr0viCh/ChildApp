@@ -61,6 +61,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_Release>1</VerInfo_Release>
         <DynamicRTL>false</DynamicRTL>
         <UsePackages>false</UsePackages>
         <FinalOutputDir>c:\Users\Konstantin\Documents\Embarcadero\Studio\Projects\ChildApp\$(Platform)\$(Config)</FinalOutputDir>
@@ -72,7 +73,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
-        <VerInfo_Keys>CompanyName=П3тр0виЧъ;FileDescription=Детское приложение;FileVersion=1.0.0.0;InternalName=ChildApp;LegalCopyright=© П3тр0виЧъ;LegalTrademarks=П3тр0виЧъ;OriginalFilename=ChildApp.exe;ProductName=Детское приложение;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=П3тр0виЧъ;FileDescription=Детское приложение;FileVersion=1.0.1.0;InternalName=ChildApp;LegalCopyright=© П3тр0виЧъ;LegalTrademarks=П3тр0виЧъ;OriginalFilename=ChildApp.exe;ProductName=Детское приложение;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -109,6 +110,10 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_Keys>CompanyName=П3тр0виЧъ;FileDescription=Детское приложение;FileVersion=1.0.1.0;InternalName=ChildApp;LegalCopyright=© П3тр0виЧъ;LegalTrademarks=П3тр0виЧъ;OriginalFilename=ChildApp.exe;ProductName=Детское приложение;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Release>1</VerInfo_Release>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <AppEnableHighDPI>true</AppEnableHighDPI>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>

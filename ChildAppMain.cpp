@@ -52,6 +52,10 @@ void __fastcall TMain::FormCreate(TObject *Sender)
 	btnClose->Visible = true;
 	#endif
 
+	#ifndef _DEBUG
+	ShowCursor(false);
+	#endif
+
 	Hook = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc,
 		GetModuleHandle(NULL), 0);
 
@@ -61,6 +65,9 @@ void __fastcall TMain::FormCreate(TObject *Sender)
 void __fastcall TMain::FormDestroy(TObject *Sender)
 {
 	UnhookWindowsHookEx(Hook);
+	#ifndef _DEBUG
+	ShowCursor(true);
+    #endif
 }
 //---------------------------------------------------------------------------
 TColor TMain::GetRandomColor()
@@ -108,11 +115,11 @@ WideString TMain::VirtualKeyToString(WORD Key)
 		case VK_CONTROL:	return "CTRL";
 		case VK_MENU:		return "ALT";
 		case VK_PAUSE:		return "PAUSE";
-		case VK_CAPITAL:	return "CAPS LOCK";
+		case VK_CAPITAL:	return "CAPS LK";
 		case VK_ESCAPE:		return "ESC";
 		case VK_SPACE:		return L"\u2423";
-		case VK_PRIOR:		return "PAGE UP";
-		case VK_NEXT:		return "PAGE DOWN";
+		case VK_PRIOR:		return "PG UP";
+		case VK_NEXT:		return "PG DN";
 		case VK_END:		return "END";
 		case VK_HOME:		return "HOME";
 		case VK_LEFT:		return L"←";
@@ -123,8 +130,8 @@ WideString TMain::VirtualKeyToString(WORD Key)
 		case VK_EXECUTE:	return "EXECUTE";
 		case VK_SNAPSHOT:
 		case VK_PRINT:		return "PRT SC";
-		case VK_INSERT:		return "INSERT";
-		case VK_DELETE:		return "DELETE";
+		case VK_INSERT:		return "INS";
+		case VK_DELETE:		return "DEL";
 		case VK_HELP:		return "HELP";
 		case VK_APPS:		return "APPS";
 		case VK_MULTIPLY:	return "*";
@@ -136,7 +143,7 @@ WideString TMain::VirtualKeyToString(WORD Key)
         case 191:
 		case VK_DIVIDE:		return "/";
 		case VK_NUMLOCK:	return "NUM LK";
-		case VK_SCROLL:		return "SCROLL";
+		case VK_SCROLL:		return "SCR LK";
 
 		case VK_LWIN:
 		case VK_RWIN:		return "WIN";
@@ -186,6 +193,16 @@ WideString TMain::VirtualKeyToString(WORD Key)
 	}
 }
 //---------------------------------------------------------------------------
+WideString TMain::MouseButtonToString(TMouseButton Button)
+{
+	switch (Button) {
+		case TMouseButton::mbLeft:   return "LEFT";
+		case TMouseButton::mbMiddle: return "MIDDLE";
+		case TMouseButton::mbRight:	 return "RIGHT";
+		default: return "";
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TMain::FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 {
 	UpdateScreen(VirtualKeyToString(Key));
@@ -195,16 +212,7 @@ void __fastcall TMain::FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 void __fastcall TMain::FormMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
 		  int X, int Y)
 {
-	WideString S;
-
-	switch (Button) {
-		case TMouseButton::mbLeft:   S = "LEFT"; break;
-		case TMouseButton::mbMiddle: S = "MIDDLE"; break;
-		case TMouseButton::mbRight:	 S = "RIGHT"; break;
-		default: S = "";
-	}
-
-	UpdateScreen(S);
+	UpdateScreen(MouseButtonToString(Button));
 }
 //---------------------------------------------------------------------------
 

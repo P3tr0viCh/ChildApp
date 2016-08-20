@@ -17,14 +17,15 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FormMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
+		  int X, int Y);
 	void __fastcall FormDestroy(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TMain(TComponent* Owner);
 
     TColor GetRandomColor();
-    WideString VirtualKeyToString(WORD Key);
+	WideString VirtualKeyToString(WORD Key);
+	WideString MouseButtonToString(TMouseButton Button);
 	void UpdateScreen(WideString S);
 };
 //---------------------------------------------------------------------------
